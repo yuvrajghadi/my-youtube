@@ -1,11 +1,18 @@
-const Header = () => {
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
-const handleSideBarClick=()=>{
-  
-}
+const Header = () => {
+  const dispatch = useDispatch();
+  const handleSideBarClick = () => {
+    dispatch(toggleMenu());
+  };
 
   return (
-    <div className="flex bg-white justify-between items-center  shadow-md">
+    <div
+      className="flex justify-between items-center shadow-md 
+                fixed top-0 left-0 right-0 z-50 
+                bg-white/30 backdrop-blur-md border-b border-white/20"
+    >
       <div className="flex justify-center items-center w-2/12">
         <img
           className="w-16 cursor-pointer"
@@ -24,7 +31,7 @@ const handleSideBarClick=()=>{
         <input
           type="text"
           placeholder="Search"
-          className="flex w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300 focus:outline-none "
+          className="flex w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur-sm border-b border-gray "
         />
         <button
           type="submit"
