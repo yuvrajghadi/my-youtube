@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 
@@ -14,7 +15,7 @@ if (!isMenuOpen) return null
       <div className="space-y-1">
         <div className="flex items-center space-x-4 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100">
           <span className="text-xl">🏠</span>
-          <span className="text-sm font-medium">Home</span>
+          <span className="text-sm font-medium"><Link to='/'>Home</Link></span>
         </div>
         <div className="flex items-center space-x-4 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100">
           <span className="text-xl">🔥</span>

@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -20,18 +21,20 @@ const Header = () => {
           alt="menu"
           onClick={handleSideBarClick}
         />
+        <a href= "/">
         <img
           className="h-20 w-40 cursor-pointer"
           src="	https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6-650-80.jpg.webp
 "
           alt="Logo"
         />
+        </a>
       </div>
       <div className="flex  w-8/12">
         <input
           type="text"
           placeholder="Search"
-          className="flex w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur-sm border-b border-gray "
+          className="flex w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
         />
         <button
           type="submit"
