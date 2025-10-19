@@ -34,7 +34,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search"
-          className="ml-14 flex md:w-1/2 md:ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
+          className="ml-6 flex md:w-1/2 md:ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
         />
         <button
           type="submit"
