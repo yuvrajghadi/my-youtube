@@ -13,10 +13,10 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="w-[85%] mt-24 m-5 h-screen">
+    <div className="w-screen md:w-[85%] mt-12 md:mt-24 md:m-5 md:h-screen">
       <iframe
        
-        className="w-3/4 h-2/3 rounded-2xl"
+        className="h-[300px] w-full  md:w-3/4 md:h-2/3 md:rounded-2xl"
         src={"https://www.youtube.com/embed/"+searchParams.get("v")}
         title="YouTube video player"
         frameborder="0"
