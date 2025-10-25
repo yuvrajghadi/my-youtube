@@ -10,7 +10,7 @@ const Header = () => {
   return (
     
     <div
-      className=" flex justify-between items-center shadow-md 
+      className=" flex py-3 md:py-0 justify-between items-center shadow-md 
                 fixed top-0 left-0 right-0 z-50 
                 bg-white/30 backdrop-blur-md border-b border-white/20"
     >
@@ -23,7 +23,7 @@ const Header = () => {
         />
         <a href= "/">
         <img
-          className="ml-2 md:h-20 w-40 cursor-pointer"
+          className="ml-2  md:h-20 w-40 cursor-pointer"
           src="	https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6-650-80.jpg.webp
 "
           alt="Logo"
@@ -34,7 +34,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search"
-          className="ml-6 flex md:w-1/2 md:ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
+          className="ml-6  flex md:w-1/2 md:ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
         />
         <button
           type="submit"
