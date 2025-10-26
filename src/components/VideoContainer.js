@@ -18,8 +18,8 @@ const VideoContainer = () => {
 
   return (
     <div
-      className=" flex flex-wrap gap-5 justify-center 
-                 overflow-y-auto h-[calc(100vh-80px)] pt-6 px-4
+      className=" flex flex-wrap justify-center w-full p-0 m-0 md:w-[100%]  gap-7 
+                 overflow-y-auto h-screen pt-6
                  scrollbar-hide"
     >
       {videos.map((video) => (

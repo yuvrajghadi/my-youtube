@@ -7,10 +7,10 @@ const VideoCards = ({ info }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className="w-full md:w-[340px] p-3 shadow-sm rounded-lg  bg-slate-50  m-2 cursor-pointer transition-transform hover:scale-[1.03]">
+    <div className="w-full md:w-[340px] md:p-3 shadow-sm md:rounded-lg  md:bg-slate-400 text-white  m-2 mx-auto cursor-pointer transition-transform md:hover:scale-[1.03] hover:scale-105">
       <div className="relative">
         <img
-          className="rounded-xl w-full h-[190px] object-cover"
+          className="md:rounded-xl w-full h-[290px] object-cover"
           alt="thumbnail"
           src={thumbnails?.medium?.url}
         />

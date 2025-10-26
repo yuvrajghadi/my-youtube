@@ -12,7 +12,7 @@ const Header = () => {
     <div
       className=" flex py-3 md:py-0 justify-between items-center shadow-md 
                 fixed top-0 left-0 right-0 z-50 
-                bg-white/30 backdrop-blur-md border-b border-white/20"
+                 border-b border-white/20"
     >
       <div className="flex justify-center items-center w-2/12">
         <img
@@ -30,18 +30,21 @@ const Header = () => {
         />
         </a>
       </div>
-      <div className="flex  w-8/12">
-        <input
-          type="text"
-          placeholder="Search"
-          className="ml-6  flex md:w-1/2 md:ml-52 py-2 px-2 rounded-l-full border border-gray-300   focus:outline-none bg-white/30 backdrop-blur- border-b border-gray "
-        />
-        <button
-          type="submit"
-          className="bg-gray-200 hover:bg-gray-300 border border-gray-300 text-white px-4 py-2 rounded-r-full flex items-center justify-center"
-        >
-          🔍
-        </button>
+      <div className="flex justify-end md:justify-center  w-8/12">
+     <input
+  type="text"
+  placeholder="Search"
+  className="hidden md:block w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300 focus:outline-none bg-white/30 backdrop-blur border-b border-gray"
+/>
+
+<button
+  type="submit"
+  className="inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 border border-gray-300 text-gray-700 px-3 py-2 md:px-4 rounded-full md:rounded-l-none md:rounded-r-full"
+>
+  🔍
+</button>
+
+
       </div>
       <div className="flex justify-end mr-2 items-center w-2/12">
         <img

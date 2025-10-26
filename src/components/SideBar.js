@@ -9,7 +9,7 @@ const isMenuOpen = useSelector((store )=>store.app.isMenuOpen)
 if (!isMenuOpen) return null
 
   return (
-    <div className="hidden md:flex flex-col w-60 bg-white text-gray-800 h-screen p-2 border-r border-gray-300  top-0 overflow-y-auto  px-4
+    <div className="hidden md:flex flex-col w-[15%] bg-white text-gray-800 h-screen p-2 border-r border-gray-300  top-0 overflow-y-auto  px-4
                  scrollbar-hide mt-20">
       {/* --- TOP MENU --- */}
       <div className="space-y-1">
