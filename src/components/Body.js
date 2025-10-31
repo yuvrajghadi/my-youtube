@@ -4,7 +4,7 @@ import SideBar from './SideBar'
 
 const Body = () => {
   return (
-    <div className='flex justify-center bg-black'>
+    <div className='flex justify-center bg-white'>
       <SideBar />
       <Outlet/>
     </div>

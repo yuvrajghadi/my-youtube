@@ -1,18 +1,56 @@
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SUGGESTION_API } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions,setSuggestions] = useState([])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      getSearchSuggestion();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  const getSearchSuggestion = async () => {
+      if (!searchQuery) {
+    setSuggestions([]); // clear suggestions when input is empty
+    return;
+  }
+    // if (!searchQuery) return;
+    console.log(searchQuery);
+    try {
+      const PROXY = "https://api.allorigins.win/raw?url=";
+      const res = await fetch(
+        PROXY + encodeURIComponent(YOUTUBE_SUGGESTION_API + searchQuery)
+      );
+
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+      const json = await res.json();
+      // console.log("Suggestions:", json[1]); // array of suggestions
+      setSuggestions(json[1])
+    } catch (err) {
+      console.error("Failed to fetch suggestions:", err);
+    }
+    
+  };
+
   const handleSideBarClick = () => {
     dispatch(toggleMenu());
   };
 
   return (
-    
     <div
       className=" flex py-3 md:py-0 justify-between items-center shadow-md 
                 fixed top-0 left-0 right-0 z-50 
-                 border-b border-white/20"
+                 border-b border-white/20 w-full"
     >
       <div className="flex justify-center items-center w-2/12">
         <img
@@ -21,29 +59,42 @@ const Header = () => {
           alt="menu"
           onClick={handleSideBarClick}
         />
-        <a href= "/">
-        <img
-          className="ml-2  md:h-20 w-40 cursor-pointer"
-          src="	https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6-650-80.jpg.webp
+        <a href="/">
+          <img
+            className="ml-2  md:h-20 w-40 cursor-pointer"
+            src="	https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6-650-80.jpg.webp
 "
-          alt="Logo"
-        />
+            alt="Logo"
+          />
         </a>
       </div>
+    <div className="w-full h-full">
       <div className="flex justify-end md:justify-center  w-8/12">
-     <input
-  type="text"
-  placeholder="Search"
-  className="hidden md:block w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300 focus:outline-none bg-white/30 backdrop-blur border-b border-gray"
-/>
-
-<button
-  type="submit"
-  className="inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 border border-gray-300 text-gray-700 px-3 py-2 md:px-4 rounded-full md:rounded-l-none md:rounded-r-full"
->
-  🔍
-</button>
-
+        <input
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          type="text"
+          placeholder="Search"
+          className="hidden md:block w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300 focus:outline-none bg-white/30 backdrop-blur border-b border-gray"
+        />
+        <button
+          type="submit"
+          className="inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 border border-gray-300 text-gray-700 px-3 py-2 md:px-4 rounded-full md:rounded-l-none md:rounded-r-full"
+        >
+          🔍
+        </button>
+      </div>
+     {suggestions.length > 0 && (
+  <div className="fixed bg-white shadow-sm p-2 border-gray-300 left-[435px] w-[22rem]">
+    <ul>
+      {suggestions.map((s) => (
+        <li key={s} className="m-1 p-2 hover:bg-slate-100 cursor-pointer">
+          {s}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
       </div>
       <div className="flex justify-end mr-2 items-center w-2/12">

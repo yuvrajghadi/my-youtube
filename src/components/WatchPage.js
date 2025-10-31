@@ -13,7 +13,7 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="w-screen md:w-[85%]  z-50 md:mt-24 md:m-5 md:h-screen">
+    <div className="w-screen md:w-[85%] z-30 md:z-0 md:mt-24 md:m-5 md:h-screen">
       <iframe
        
         className="h-[300px] w-full  md:w-3/4 md:h-2/3 md:rounded-2xl"

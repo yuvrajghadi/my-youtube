@@ -7,15 +7,15 @@ const VideoCards = ({ info }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className="w-full md:w-[340px] md:p-3 shadow-sm md:rounded-lg  md:bg-slate-400 text-white  m-2 mx-auto cursor-pointer transition-transform md:hover:scale-[1.03] hover:scale-105">
+    <div className="w-full md:w-[340px] md:p-3 shadow-sm md:rounded-lg  text-black  m-2 mx-auto cursor-pointer transition-transform md:hover:scale-[1.03] hover:scale-105">
       <div className="relative">
         <img
-          className="md:rounded-xl w-full h-[290px] object-cover"
+          className="md:rounded-xl w-full h-[290px] md:h-[190px] object-cover"
           alt="thumbnail"
           src={thumbnails?.medium?.url}
         />
         {/* Optional: video duration overlay */}
-        <span className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded-md">
+        <span className="absolute bottom-2 right-2 bg-black/80  text-xs px-1.5 py-0.5 rounded-md">
           {info.contentDetails?.duration?.replace("PT", "").toLowerCase() || ""}
         </span>
       </div>
