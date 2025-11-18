@@ -1,16 +1,23 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SUGGESTION_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions,setSuggestions] = useState([])
+  const [showsuggestions,setShowSuggestion] = useState(true)
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else { 
       getSearchSuggestion();
+      }
     }, 200);
 
     return () => {
@@ -36,6 +43,10 @@ const Header = () => {
       const json = await res.json();
       // console.log("Suggestions:", json[1]); // array of suggestions
       setSuggestions(json[1])
+
+      dispatch(  cacheResults ({
+        [searchQuery]: json[1],
+      }))
     } catch (err) {
       console.error("Failed to fetch suggestions:", err);
     }
@@ -74,6 +85,8 @@ const Header = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
+          onFocus={()=>setShowSuggestion(true)}
+          onBlur={()=>setShowSuggestion(false)}
           placeholder="Search"
           className="hidden md:block w-1/2 ml-52 py-2 px-2 rounded-l-full border border-gray-300 focus:outline-none bg-white/30 backdrop-blur border-b border-gray"
         />
@@ -84,7 +97,7 @@ const Header = () => {
           🔍
         </button>
       </div>
-     {suggestions.length > 0 && (
+     {showsuggestions && (
   <div className="fixed bg-white shadow-sm p-2 border-gray-300 left-[435px] w-[22rem]">
     <ul>
       {suggestions.map((s) => (
